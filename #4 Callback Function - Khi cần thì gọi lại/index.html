@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    const callback = (error, data) => {
+      if (error) {
+        console.log(">>> calling callback with error", error);
+      }
+      if (data) {
+        console.log(">>> calling callback with data", data);
+      }
+    };
+    function getTodos() {
+      var request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+        if (this.readyState === 4 && request.status === 200) {
+          // Typical action to be performed when the document is ready:
+          const data = request.responseText;
+          callback(undefined, data);
+        }
+        if (this.readyState === 4 && request.status !== 200) {
+          callback("something wrong", undefined);
+        }
+      };
+      request.open("GET", "https://jsonplaceholder.typicode.com/todos", true);
+      request.send();
+    }
+    console.log(1);
+    console.log(2);
+    getTodos(callback);
+    console.log(3);
+    console.log(4);
+  </script>
+  <body>
+    <h1>Hello World</h1>
+  </body>
+</html>

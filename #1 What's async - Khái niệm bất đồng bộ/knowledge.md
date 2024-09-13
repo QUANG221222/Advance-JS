@@ -1,0 +1,1 @@
+_Bất đồng bộ(asynchronous)_: Trong chương trình chúng ta có dòng code chạy rất nhanh, nhưng có dòng code lại chạy rất chậm do kiến trúc của js cho phép chương trình chạy song song cùng (request) vì chấp nhận tất cả các request như thế thì phải có cơ chế để tất cả các request đêu được xử lí. Không có thứ tự
